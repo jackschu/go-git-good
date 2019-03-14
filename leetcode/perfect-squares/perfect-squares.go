@@ -1,4 +1,6 @@
 // solving https://leetcode.com/problems/perfect-squares/
+// note that this is solvable using 4-square theorem and 3-square theorem
+// but practicing DP seemed more useful
 package main
 
 import (
