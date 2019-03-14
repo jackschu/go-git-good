@@ -13,3 +13,5 @@ func TestSquares(t *testing.T) {
 		}
 	}
 }
+
+//  LocalWords:  TestSquares NumSquares
