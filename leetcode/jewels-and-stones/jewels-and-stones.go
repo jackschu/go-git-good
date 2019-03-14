@@ -10,10 +10,10 @@ import (
 func numJewelsInStones(J string, S string) int {
 	out := 0
 	jewelSet := make(map[rune]bool)
-	for _, rune := range J {		
+	for _, rune := range J {
 		jewelSet[rune] = true
 	}
-	
+
 	for _, rune := range S {
 		_, ok := jewelSet[rune]
 		if ok {
