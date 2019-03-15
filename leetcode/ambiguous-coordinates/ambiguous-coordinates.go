@@ -94,4 +94,5 @@ func main() {
 	fmt.Println(ambiguousCoordinates(s))
 }
 
-//  LocalWords:  ambiguousCoordinates AmbiguousCoordinates
+//  LocalWords:  ambiguousCoordinates AmbiguousCoordinates val
+//  LocalWords:  isNoDecimalLegal isValidDecimalPart validDecimals
