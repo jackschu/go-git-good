@@ -15,23 +15,14 @@ func insert(i int, val rune, slice []rune) []rune {
 	return slice
 }
 
-func isNoDecimalLegal(list []rune) bool{
+func isNoDecimalLegal(list []rune) bool {
 	if len(list) == 1 && list[0] == '0' {
 		return true
 	}
-	ct := 0
-	for _, r := range list{
-		if ct == 2 {
-			return false
-		}
-		
-		if r != '0' {
-			return true
-		} else {
-			ct++ 
-		}
+	if len(list) == 0 {
+		return false
 	}
-	return false
+	return list[0] != '0'
 }
 
 func isValidDecimalPart(list []rune) bool {
@@ -55,31 +46,38 @@ func validDecimals(list []rune) []string {
 	for i := 1; i < len(list); i++ {
 		front := list[:i]
 		back := list[i:]
-		if isNoDecimalLegal(front) && isValidDecimalPart(back){
-			out = append(out, string(front) + "." + string(back))
+		if isNoDecimalLegal(front) && isValidDecimalPart(back) {
+			out = append(out, string(front)+"."+string(back))
 		}
-		
+
 	}
-	
-	return out 
+
+	return out
 }
 
 func ambiguousCoordinates(S string) []string {
 	list := []rune(strings.Trim(S, "()"))
-//	var out []string
-	fmt.Println(validDecimals(list))
-/*	//put comma first
+	var out []string
+	had := make(map[string]bool)
+
 	for i := 1; i < len(list); i++ {
-		for first := 1; first < i; first++ {
-			for second := i; second < len(list); second++ {
-			
+		first := list[:i]
+		second := list[i:]
+		for _, pre := range validDecimals(first) {
+			for _, post := range validDecimals(second) {
+				temp := "(" + pre + ", " + post + ")"
+				_, found := had[temp]
+				if !found {
+					out = append(out, temp)
+					had[temp] = true
+				}
+
 			}
 		}
+
 	}
 
-	
-	fmt.Println(out)*/
-	return []string{"hi"}
+	return out
 }
 
 var sc *bufio.Scanner = bufio.NewScanner(os.Stdin)
